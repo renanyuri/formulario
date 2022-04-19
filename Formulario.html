@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+</head>
+<body>
+    <div>
+        <h1>Formulário</h1>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Insira um texto" id="textoInserido" required="required">
+    </div>
+    <br>
+    <div>
+        <input type="radio" name="opcao" value="Lista">
+        <label>Lista</label>
+        <input type="radio" name="opcao" value="Pilha">
+        <label>Pilha</label>
+    </div>
+    <br>
+    <div>
+        <input id="inserirB" type="button" value="Inserir" onclick="inserir()">
+        <input id="limparB" type="button" value="Limpar" onclick="limpar()">
+    </div>
+    <br>
+    <label id="text" for="nome">Lista: </label>
+    <br>
+    <div id="texto1"></div>
+    <br>
+    <label id="text" for="nome">Pilha: </label>
+    <br>
+    <div id="texto2"></div>
+    <br>
+
+    <script>
+            var lista = [];
+            var pilha = [];
+
+            document.getElementById("inserirB").onclick = function() {
+                var texto = document.getElementById("textoInserido").value;
+                var radios = document.getElementsByName("opcao");
+                
+                for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].checked && radios[i].value == "Lista"){
+                        lista.push(texto);
+                        console.log(radios[i])
+                        document.getElementById("texto1").innerHTML = lista;
+                    }else if(radios[i].checked && radios[i].value == "Pilha"){
+                        pilha.unshift(texto);
+                        document.getElementById("texto2").innerHTML = pilha;
+                    }
+                }
+            };
+
+            document.getElementById("limparB").onclick = function(){
+                console.log("Limpou as listas");
+                lista = [];
+                pilha = [];
+            }
+    </script>
+</body>
+</html>
